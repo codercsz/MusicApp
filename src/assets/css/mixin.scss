@@ -1,4 +1,4 @@
-@import "./variable.scss";
+ @import "./variable.scss";
 /*根据dpr计算font-size*/
 @mixin font_dpr($font-size){
   font-size: $font-size;
@@ -27,6 +27,7 @@
 // 根据属性选择器来设置背景颜色
 @mixin bg_color(){
   background: $background-color-theme;
+  //监听属性值
   [data-theme=theme1] & {
     background: $background-color-theme1;
   }
@@ -74,6 +75,7 @@
 }
 
 @mixin bg_img($url){
+  //判断属性
   [data-theme=theme] & {
     background-image: url($url + '_163.png');
   }
@@ -86,6 +88,7 @@
   background-size: cover;
   background-repeat: no-repeat;
 
+  //判断屏幕大小，分别显示不同尺寸的图片
   [data-theme=theme][data-dpr='2'] & {
     background-image: url($url + '_163@2x.png');
   }

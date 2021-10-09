@@ -1,15 +1,23 @@
 <template>
   <div id="app">
-    <div class="box"></div>
-    <p>我是div</p>
+    <Header></Header>
   </div>
 </template>
+<script>
 
-<style lang="scss">
-  .box {
-    width: 100px;
-    height: 100px;
-    background: red;
-    transform: rotate(50%,50%);
+  import Header from "./components/Header";
+  export default {
+    components:{
+      Header
+    },
+    methods:{
+
+    }
+
   }
+</script>
+
+<style scoped lang="scss">
+
+
 </style>

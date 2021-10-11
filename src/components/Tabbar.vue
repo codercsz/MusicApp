@@ -17,7 +17,10 @@
 
 <script>
     export default {
-        name: "Tabbar"
+        name: "Tabbar",
+        methods:{
+
+        }
     }
 </script>
 

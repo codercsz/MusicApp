@@ -9,6 +9,9 @@ html, body{
   overflow: hidden;
   // 解决IScroll拖拽卡顿问题
   touch-action: none;
+  [v-cloak] {  /*属性选择器*/
+    display: none;
+  }
 }
 body{
   @include font_size($font_medium);

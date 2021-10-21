@@ -1,5 +1,7 @@
-
 module.exports = {
+  devServer: {
+    disableHostCheck: true  //内网穿透配置
+  },
   configureWebpack: {
     module: {
       rules: [
@@ -16,4 +18,4 @@ module.exports = {
       ]
     }
   }
-}
+};

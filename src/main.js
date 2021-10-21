@@ -4,6 +4,25 @@ import router from './router'
 import store from './store'
 import './assets/css/base.scss';
 import VueLazyload from 'vue-lazyload'
+import VConsole from 'vconsole';
+
+import Loading from './plugin/loading/index';
+
+
+/*
+vant
+import { Loading } from 'vant';
+
+Vue.use(Loading);
+*/
+
+
+
+Vue.use(Loading, {
+  title: '正在加载...'
+})
+
+
 
 
 Vue.use(VueLazyload, {
@@ -12,6 +31,9 @@ Vue.use(VueLazyload, {
 });
 
 Vue.config.productionTip = false
+
+const vconsole = new VConsole();
+Vue.use(vconsole);
 
 new Vue({
   router,

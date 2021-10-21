@@ -2,18 +2,23 @@
   <div id="app">
     <Header></Header>
     <Tabbar></Tabbar>
-    <router-view></router-view>
+	  <keep-alive>
+      <router-view></router-view>
+	  </keep-alive>
+	  <Player></Player>
   </div>
 </template>
 <script>
 
   import Header from "./components/Header";
   import Tabbar from "./components/Tabbar";
+  import Player from "./views/Player";
   export default {
-    components:{
-      Header,
-      Tabbar
-    },
+      components: {
+          Header,
+          Tabbar,
+          Player
+      },
     methods:{
 
     }

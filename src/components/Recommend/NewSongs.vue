@@ -3,33 +3,18 @@
         <div class="son-top">
             <h3>为你推荐</h3>
         </div>
-        <ul class="song-list">
-            <li v-for="value in newsonlists" :key="value.id" v-on:click="test">
-
-<!--                <img :src="value.song.album.picUrl" alt="">-->
-                <img v-lazy="value.song.album.picUrl" alt="">
-
-                <div class="song-info">
-                    <div>
-                        <span>{{value.name}} - </span>
-                        <span>{{value.song.artists[0].name}}</span>
-                        <p>{{value.song.album.name}}</p>
-                    </div>
-
-                </div>
-            </li>
-        </ul>
+	    <SongListItem :newsonlists="newsonlists"></SongListItem>
+	    
     </div>
 </template>
 
 <script>
+    import SongListItem from "../SongListItem";
     export default {
         name: "NewSongs",
-        methods: {
-            test() {
-                console.log(111);
-            }
-        },
+		    components:{
+            SongListItem
+		    },
         props: {
             newsonlists: {
                 type: Array,
@@ -42,12 +27,10 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../assets/css/variable";
-    @import "../assets/css/mixin";
+    @import "../../assets/css/variable";
+    @import "../../assets/css/mixin";
     .song {
         @include bg_sub_color();
-
-
         .son-top {
             width: 100%;
             height: 84px;
@@ -63,7 +46,6 @@
 
             }
         }
-
         .song-list {
             padding: 20px;
             @include font_color();
@@ -73,7 +55,6 @@
                 border-radius: 20px;
                 line-height: 150px;
             }
-
             li {
                 display: flex;
                 justify-content: flex-start;

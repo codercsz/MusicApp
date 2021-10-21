@@ -15,7 +15,7 @@ const Recommend = (resolve) => {
 }
 
 const Detail = (resolve) => {
-  import('../components/Detail').then((module) => {
+  import('../components/Detail/Detail').then((module) => {
     resolve(module);
   });
 }
@@ -43,15 +43,44 @@ const routes = [
   },
   {
     path: '/recommend', component: Recommend,
+      children: [
+          {
+              path: 'detail/:id/:type',
+              component: Detail,
+              //三级路由
+              children: [
+                  {
+                      path: '/detail/comments',
+                      component: () => import("../components/Detail/Comments")
+                  }
+              ]
+          },
+
+      ]},
+  {
+    path: '/singer',
+    component: Singer,
+    children: [
+      {
+        path: 'detail/:id/:rank',
+        component: () => import('../components/Detail/Detail')
+        
+      }
+    ]
+  },
+  {
+    path: '/rank',
+    component: Rank,
     children: [
       {
         path: 'detail/:id/:type',
-        component: Detail
+        component: () => import('../components/Detail/Detail')
+      
       }
-    ]},
-  { path: '/singer', component: Singer },
-  { path: '/rank', component: Rank },
-  { path: '/search', component: Search }
+    ]
+  },
+  {path: '/search', component: Search },
+  { path: '/account', component: () => import("../components/account/Account") }
 ]
 
 const router = new VueRouter({

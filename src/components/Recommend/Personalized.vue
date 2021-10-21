@@ -43,8 +43,8 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../assets/css/variable";
-    @import "../assets/css/mixin";
+    @import "../../assets/css/variable";
+    @import "../../assets/css/mixin";
     .personalized {
         @include bg_sub_color();
         .personalized-top {
@@ -69,18 +69,25 @@
             justify-content: space-around;
             flex-wrap: wrap;
             .item {
+                /*position: fixed;*/
+                /*bottom: 0;*/
+                /*left: 0;*/
+                
                 width: 200px;
-                padding-bottom: 20px;
+                height: 200px;
+                margin-bottom: 80px;
+                
                 img {
                     border-radius: 20px;
-                    width: 100%;
-                    height: 200px;
+                    height: 100%;
+                    
                 }
                 p {
                     @include clamp(2);
                     @include font_color();
                     @include font_size($font_medium_s);
                     text-align: center;
+                    margin-top: 10px;
                 }
 
             }

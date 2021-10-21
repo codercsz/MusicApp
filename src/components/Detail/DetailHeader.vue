@@ -19,7 +19,7 @@
         props: {
             title: {
                 type: String,
-                default: "...",
+                default: "Loading...",
                 require: true
             }
         },
@@ -39,36 +39,38 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../assets/css/variable";
-    @import "../assets/css/mixin";
+    @import "../../assets/css/variable";
+    @import "../../assets/css/mixin";
     .header {
-        width: 100%;
-        height: 100px;
-        /*background: red;*/
-        @include bg_color();
-        display: flex;
-        justify-content: space-between;
-
-        .header-left, .header-right {
-            width: 84px;
-            height: 84px;
-            margin-top: 8px;
-        }
-        .header-title {
-            text-align: center;
-            line-height: 100px;
-            color: #FFFFFF;
-            font-weight: bold;
-            @include no-wrap();
-            @include font_size($font_medium);
-
-        }
-        .header-left{
-            @include bg_img('../assets/images/back')
-        }
-        .header-right{
-            @include bg_img('../assets/images/more')
-        }
+	    width: 100%;
+	    height: 100px;
+	    /*background: red;*/
+	    @include bg_color();
+	    display: flex;
+	    justify-content: space-between;
+	    .header-left, .header-right {
+		    width: 84px;
+		    height: 84px;
+		    margin-top: 8px;
+	    }
+	
+	    .header-title {
+		    text-align: center;
+		    line-height: 100px;
+		    color: #FFFFFF;
+		    font-weight: bold;
+		    @include no-wrap();
+		    @include font_size($font_medium);
+		
+	    }
+	
+	    .header-left {
+		    @include bg_img('../../assets/images/back')
+	    }
+	
+	    .header-right {
+		    @include bg_img('../../assets/images/more')
+	    }
     }
 
 </style>

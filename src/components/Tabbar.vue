@@ -33,8 +33,6 @@
         display: flex;
         justify-content: space-around;
         @include bg_sub_color();
-
-
         .item {
             span {
                 line-height: 84px;
@@ -45,7 +43,6 @@
                 span {
                     @include font_active_color();
                 }
-
                 border-bottom: 5px solid #000;
                 @include border_color();
 

@@ -2,7 +2,7 @@
     <div class="header" @click="toggleColor()">
         <div class="header-left"></div>
         <div class="header-title">Slag Music</div>
-        <div class="header-right"></div>
+        <div class="header-right" @click.stop="accountClick"></div>
     </div>
 </template>
 
@@ -22,7 +22,9 @@
                     this.index = 0;
                 }
                 document.documentElement.setAttribute('data-theme', this.theme[this.index]);
-
+            },
+            accountClick() {
+                this.$router.push("./account");
             }
         }
     }

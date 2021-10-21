@@ -5,21 +5,19 @@
         <div class="bottom">
             <ScrollView ref="scrollview">
                 <div>
-                    <DetailBottom :songlist="detailList.tracks" :comments="comments.total"></DetailBottom>
+                    <DetailBottom :songlist="detailList.tracks" :comments="comments.total" @fatherSelectComments="selectComments"></DetailBottom>
                 </div>
             </ScrollView>
         </div>
-
     </div>
 </template>
 
 <script>
-    import SubHeader from "./SubHeader";
+    import SubHeader from "./DetailHeader";
     import DetailTop from "./DetailTop";
     import DetailBottom from "./DetailBottom";
-    import ScrollView from "./ScrollView";
-    import {getSongDetail,getAlbum,getComment,getAlbumComment} from '../api/index';
-
+    import ScrollView from "../ScrollView";
+    import {getSongDetail, getAlbum, getComment, getAlbumComment, getSingerDetail,getTopListDetail} from '../../api';
     export default {
         name: "Detail",
         components: {
@@ -36,10 +34,19 @@
                 }
             }
         },
+        methods: {
+            selectComments(id) {
+                this.$router.push({
+                    path: `/recommend/detail/${id}`
+                })
+
+            }
+        },
         created() {
             // console.log(this.$route.params.type)
-            if(this.$route.params.type === 'personalizeds'){
+            if(this.$route.params.type === 'personalizeds' || this.$route.params.type === 'rank'){
                 //获取歌单列表
+	            
                 getSongDetail({id: this.$route.params.id}).then(data => {
                     this.detailList = data.playlist
                     this.imgPath = data.playlist;
@@ -50,8 +57,7 @@
                     this.comments = {
                         total: data.total
                     }
-                    console.log(this.comments);
-                    console.log(data);
+
                 }).catch(err=>{
                     console.log(err);
                 })
@@ -72,12 +78,22 @@
                     this.comments = {
                         total: data.total
                     }
-                    console.log(data);
                 }).catch(err=>{
                     console.log(err);
                 })
-
             }
+            else if (this.$route.params.type === 'singer') {
+              //获取歌手详情
+              getSingerDetail({id: this.$route.params.id}).then(value => {
+                console.log(value);
+                this.detailList = {
+                  name: value.artist.name,
+                  coverImgUrl: value.artist.picUrl,
+                  tracks: value.hotSongs
+                }
+              });
+            }
+          
 
 
         },
@@ -89,8 +105,10 @@
                     this.$refs.top.$el.style.transform = `scale(${1 + scale})`;
 
                 }else{
-                    let scale = 20 * Math.abs(offsetY) / defaultHeight
-                    this.$refs.top.$el.style.filter = `blur(${scale}px)`;
+                    /*let scale = 20 * Math.abs(offsetY) / defaultHeight
+                    this.$refs.top.$el.style.filter = `blur(${scale}px)`;*/
+                    let scale = Math.abs(offsetY) / defaultHeight
+                    this.$refs.top.changeMask(scale);
                 }
             });
         }
@@ -98,21 +116,23 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../assets/css/mixin";
+    @import "../../assets/css/mixin";
     .detail {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        @include bg_sub_color();
-        .bottom {
-            position: fixed;
-            top: 500px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
+	    overflow: hidden;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    @include bg_sub_color();
+	
+	    .bottom {
+		    position: fixed;
+		    top: 500px;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		
+	    }
     }
-
 </style>

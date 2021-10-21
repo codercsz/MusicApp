@@ -9,31 +9,31 @@
                    <new-songs :newsonlists="newsonlists"></new-songs>
                </div>
            </ScrollView>
+	       
        </div>
         <transition>
             <router-view></router-view>
         </transition>
-
+	    
     </div>
 </template>
 
 <script>
     import {getBanner, getPersonalized,getNewAlbum ,getNewSong} from "../api/index";
-    import Banner from "../components/Banner";
-    import Personalized from "../components/Personalized";
-    import NewSongs from "../components/NewSongs";
+    import Banner from "../components/Recommend/Banner";
+    import Personalized from "../components/Recommend/Personalized";
+    import NewSongs from "../components/Recommend/NewSongs";
     import ScrollView from "../components/ScrollView";
-
-
-
+    import Player from "./Player";
+  
     export default {
         name: "Recommend",
         components: {
             Banner,
             Personalized,
             NewSongs,
-            ScrollView
-
+            ScrollView,
+            Player
         },
         methods:{
             fatherSelectItem(id,type) {
@@ -70,7 +70,27 @@
 
             });
             getNewSong().then(data => {
-                this.newsonlists = data.result;
+                let list = [];
+                data.result.forEach(value => {
+                    let obj = {};
+                    obj.id = value.id;
+                    obj.name = value.name;
+                    obj.picUrl = value.song.album.picUrl;
+                    let singer = '';
+                    obj.albumName = value.song.album.name
+                    //判断是否只有一个演唱者
+                    for (let i = 0; i < value.song['artists'].length;i++){
+                        if (i === 0) {
+                            singer = value.song['artists'][i].name;
+                        }else {
+                            singer += '-' + value.song['artists'][i].name;
+                        }
+                    }
+                    obj.singer = singer;
+                    list.push(obj);
+                });
+                this.newsonlists = list;
+                
             });
         }
     }

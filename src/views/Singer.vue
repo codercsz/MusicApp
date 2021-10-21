@@ -58,7 +58,6 @@
            this.$refs.ScrollView.scrollTo(0, -offsetY);
         },
         touchstart(e) {
-          console.log(e.target.dataset.index);
           let index = parseInt(e.target.dataset.index);
           this._keyDown(index);
           this.beginOffsetY = e.touches[0].pageY;
@@ -101,7 +100,6 @@
             this.$refs.group.forEach(group => {
               this.groupsTop.push(group.offsetTop);
             });
-            console.log(this.groupsTop);
           });
         }
       },

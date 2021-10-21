@@ -1,9 +1,12 @@
 <template>
     <div class="search">
       <div class="search-box">
-	        
 	        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNiAyNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjYzljOWNhIiBkPSJNMjUuMTgxIDIzLjUzNWwtMS40MTQgMS40MTQtNy4zMTUtNy4zMTRBOS45NjYgOS45NjYgMCAwIDEgMTAgMjBDNC40NzcgMjAgMCAxNS41MjMgMCAxMFM0LjQ3NyAwIDEwIDBzMTAgNC40NzcgMTAgMTBjMCAyLjM0Mi0uODExIDQuNDktMi4xNiA2LjE5NWw3LjM0MSA3LjM0ek0xMCAyYTggOCAwIDEgMCAwIDE2IDggOCAwIDAgMCAwLTE2eiIvPjwvc3ZnPg==" alt="">
 	        <input type="text" placeholder="搜索歌曲、歌手、专辑" v-model="keywords" v-throttle="search">
+	      
+	        <span class="close" v-show="keywords !==''" @click="clearKeywords">
+		        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjOTk5ODk5IiBkPSJNMTMuMzc5IDEybDEwLjMzOCAxMC4zMzdhLjk3NS45NzUgMCAxIDEtMS4zNzggMS4zNzlMMTIuMDAxIDEzLjM3OCAxLjY2MyAyMy43MTZhLjk3NC45NzQgMCAxIDEtMS4zNzgtMS4zNzlMMTAuNjIzIDEyIC4yODUgMS42NjJBLjk3NC45NzQgMCAxIDEgMS42NjMuMjg0bDEwLjMzOCAxMC4zMzhMMjIuMzM5LjI4NGEuOTc0Ljk3NCAwIDEgMSAxLjM3OCAxLjM3OEwxMy4zNzkgMTIiLz48L3N2Zz4=" alt="">
+	        </span>
         </div>
 	    <div class="search-suggest" v-show="keywords !== ''">
 		    
@@ -25,7 +28,7 @@
 		    </ul>
 	    </div>
 	    <ul class="search-history">
-		    <li v-for="value in searchHistory" :key="value">
+		    <li v-for="value in searchHistory" :key="value" @click="selectHistory(value)">
 			    <div class="history-left">
 				    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjYzljYWNhIiBkPSJNMTUgMzBDNi43MTYgMzAgMCAyMy4yODQgMCAxNVM2LjcxNiAwIDE1IDBzMTUgNi43MTYgMTUgMTUtNi43MTYgMTUtMTUgMTVtMC0yOEM3LjgyIDIgMiA3LjgyIDIgMTVzNS44MiAxMyAxMyAxMyAxMy01LjgyIDEzLTEzUzIyLjE4IDIgMTUgMm03IDE2aC04YTEgMSAwIDAgMS0xLTFWN2ExIDEgMCAxIDEgMiAwdjloN2ExIDEgMCAxIDEgMCAyIi8+PC9zdmc+" alt="">
 				    <p>{{value}}</p>
@@ -95,6 +98,13 @@
           return item !== name;
         });
         setLocalStorage('searchHistory', this.searchHistory);
+      },
+      selectHistory(name) {
+        this.keywords = name;
+        this.search();
+      },
+      clearKeywords() {
+        this.keywords = '';
       }
     },
     created() {
@@ -152,6 +162,14 @@
 			border-radius: 30px;
 			border-bottom: 1px solid #ccc;
 			/*height: 60px;*/
+			.close {
+				position: fixed;
+				right: 40px;
+				img{
+					width:30px;
+					height: 30px;
+				}
+			}
 			img{
 				width: 40px;
 				height: 40px;

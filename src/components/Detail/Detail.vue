@@ -46,7 +46,6 @@
             // console.log(this.$route.params.type)
             if(this.$route.params.type === 'personalizeds' || this.$route.params.type === 'rank'){
                 //获取歌单列表
-	            
                 getSongDetail({id: this.$route.params.id}).then(data => {
                     this.detailList = data.playlist
                     this.imgPath = data.playlist;
@@ -84,8 +83,7 @@
             }
             else if (this.$route.params.type === 'singer') {
               //获取歌手详情
-              getSingerDetail({id: this.$route.params.id}).then(value => {
-                console.log(value);
+              getSingerDetail({id:this.$route.params.id}).then(value => {
                 this.detailList = {
                   name: value.artist.name,
                   coverImgUrl: value.artist.picUrl,

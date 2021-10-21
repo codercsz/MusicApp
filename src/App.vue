@@ -2,7 +2,8 @@
   <div id="app">
     <Header></Header>
     <Tabbar></Tabbar>
-	  <keep-alive>
+	  <!--include:指定的组件会被保存状态,其他的不会-->
+	  <keep-alive include="Singer,Search">
       <router-view></router-view>
 	  </keep-alive>
 	  <Player></Player>

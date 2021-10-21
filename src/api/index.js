@@ -50,7 +50,6 @@ export const getLetterArtists = (letter)=> {
       result.forEach(item => {
         lettersArtists.push(...item.artists);  //解构
       });
-      // console.log(lettersArtists);
       resolve(lettersArtists);
     }).catch(err => {
       reject(err);

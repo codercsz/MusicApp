@@ -12,13 +12,15 @@
 	import AccountHeader from "./AccountHeader";
 	import AccountBottom from "./AccountBottom";
 	import Player from "../../views/Player";
+  import MetaInfo from "../../../vue-meta-info";
     export default {
-        name: "Account",
-		    components:{
-            AccountHeader,
-            AccountBottom,
-            Player
-		    },
+      name: "Account",
+      metaInfo: MetaInfo.account,
+      components: {
+        AccountHeader,
+        AccountBottom,
+        Player
+      },
         data() {
             return{
                 switchNum: 0

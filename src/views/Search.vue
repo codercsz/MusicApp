@@ -46,9 +46,11 @@
   import {getSearchList,getHotList} from "../api/index";
   import {mapActions} from 'vuex';
   import {getLocalStorage, setLocalStorage} from "../tools/tools";
+  import MetaInfo from "../../vue-meta-info";
   
   export default {
     name: "Search",
+	  metaInfo:MetaInfo.search,
     data() {
       return {
         keywords: "",

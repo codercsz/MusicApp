@@ -7,6 +7,9 @@ import VueLazyload from 'vue-lazyload'
 import VConsole from 'vconsole';
 
 import Loading from './plugin/loading/index';
+import MetaInfo from 'vue-meta-info'
+
+Vue.use(MetaInfo)
 
 
 /*
@@ -38,5 +41,9 @@ Vue.use(vconsole);
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  //以下代码是安装了预渲染的插件之后自动添加的
+  mounted: () => document.dispatchEvent(new Event("x-app-rendered")),
+  
+  
 }).$mount('#app')

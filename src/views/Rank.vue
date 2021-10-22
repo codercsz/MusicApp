@@ -44,6 +44,7 @@
 <script>
   import {getTopListDetail} from "../api/index";
   import ScrollView from "../components/ScrollView";
+  import MetaInfo from "../../vue-meta-info";
   export default {
     name: "Rank",
     data() {
@@ -51,6 +52,7 @@
         category: {}
       }
     },
+    metaInfo:MetaInfo.rank,
 	  methods:{
       selectItem(id) {
         this.$router.push(`/rank/detail/${id}/rank`)

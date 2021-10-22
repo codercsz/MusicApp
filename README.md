@@ -1,19 +1,8 @@
-# music
+#### 一个模仿网易云的webApp
+#### 技术栈
 
-## Project setup
-```
-npm install
-```
+- Vue.js2.x + vue-router + vuex
+- axios网络请求库
+- 网易云官方开源的nodeJs版API : https://github.com/Binaryify/NeteaseCloudMusicApi
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### 后面会持续更新

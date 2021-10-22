@@ -12,6 +12,8 @@
 node app.js
 
 #### use
-npm i
+npm i 
+
 npm run serve
+
 npm run build

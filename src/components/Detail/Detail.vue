@@ -17,7 +17,7 @@
     import DetailTop from "./DetailTop";
     import DetailBottom from "./DetailBottom";
     import ScrollView from "../ScrollView";
-    import {getSongDetail, getAlbum, getComment, getAlbumComment, getSingerDetail,getTopListDetail} from '../../api';
+    import {getSongDetail, getAlbum, getComment, getAlbumComment, getSingerDetail} from '../../api/index';
     import MetaInfo from "../../../vue-meta-info";
 
     export default {
@@ -46,7 +46,7 @@
         }
       },
       created() {
-        // console.log(this.$route.params.type)
+        console.log(this.$route.params.type)
         if (this.$route.params.type === 'personalizeds' || this.$route.params.type === 'rank') {
           //获取歌单列表
           getSongDetail({id: this.$route.params.id}).then(data => {
@@ -64,7 +64,9 @@
             console.log(err);
           })
       
-        } else if (this.$route.params.type === 'albums') {
+        }
+        else if (this.$route.params.type === 'albums') {
+          console.log('albums');
           //获取专辑列表
           getAlbum({id: this.$route.params.id}).then(data => {
             // console.log(data);
@@ -83,7 +85,8 @@
           }).catch(err => {
             console.log(err);
           })
-        } else if (this.$route.params.type === 'singer') {
+        }
+        else if(this.$route.params.type === 'singer') {
           //获取歌手详情
           getSingerDetail({id: this.$route.params.id}).then(value => {
             this.detailList = {

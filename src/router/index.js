@@ -39,7 +39,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/', redirect: Recommend,
+    //重定向 定的是路由并非组件
+    path: '/', redirect: '/recommend',
+    
   },
   {
     path: '/recommend', component: Recommend,
@@ -62,7 +64,7 @@ const routes = [
     component: Singer,
     children: [
       {
-        path: 'detail/:id/:rank',
+        path: 'detail/:id/:type',
         component: () => import('../components/Detail/Detail')
         
       }

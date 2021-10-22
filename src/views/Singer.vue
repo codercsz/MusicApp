@@ -34,7 +34,6 @@
 
 <script>
     import {getAllArtists} from "../api/index";
-    import {getSingerDetail} from "../api/index";
     import ScrollView from "../components/ScrollView";
     import MetaInfo from "../../vue-meta-info";
 

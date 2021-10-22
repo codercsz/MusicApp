@@ -7,6 +7,7 @@
       <router-view></router-view>
 	  </keep-alive>
 	  <Player></Player>
+	  <VantLoading></VantLoading>
   </div>
 </template>
 <script>
@@ -14,11 +15,14 @@
   import Header from "./components/Header";
   import Tabbar from "./components/Tabbar";
   import Player from "./views/Player";
+  import VantLoading from "./plugin/vantloading/VantLoading";
   export default {
       components: {
           Header,
           Tabbar,
-          Player
+          Player,
+        VantLoading
+	      
       },
     methods:{
 

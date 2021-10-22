@@ -1,5 +1,6 @@
 import axios from "axios";
 import Vue from 'vue';
+import store from '../store/index'
 
 //全局配置
 axios.defaults.baseURL = 'http://192.168.1.19:3000';
@@ -13,11 +14,13 @@ let count = 0;
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   count++;
-  Vue.showLoading();
+  // Vue.showLoading();
+  store.commit('setLoading', true);  //van-loading
   return config;
 }, function (error) {
   // 对请求错误做些什么
-  Vue.hiddenLoading();  //发生错误也需要隐藏
+  // Vue.hiddenLoading();  //发生错误也需要隐藏
+  store.commit('setLoading', false);
   return Promise.reject(error);
 });
 
@@ -26,12 +29,15 @@ axios.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   count--;
   if (count === 0) {
-    Vue.hiddenLoading();
+    // Vue.hiddenLoading();
+    store.commit('setLoading', false);
   }
   return response;
 }, function (error) {
   // 对响应错误做点什么
-  Vue.hiddenLoading();
+  store.commit('setLoading', false);
+  
+  // Vue.hiddenLoading();
   return Promise.reject(error);
 });
 

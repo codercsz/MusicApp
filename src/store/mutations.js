@@ -78,4 +78,8 @@ export default {
             state.historyList.push(song);
         }
     },
+    setLoading(state, flag) {
+      state.loading = flag;
+    }
+  
 }

@@ -3,7 +3,7 @@ import Vue from 'vue';
 import store from '../store/index'
 
 //全局配置
-axios.defaults.baseURL = 'http://192.168.1.19:3000';
+axios.defaults.baseURL = 'http://192.168.0.102:3000';
 axios.defaults.timeout = 3000;
 
 

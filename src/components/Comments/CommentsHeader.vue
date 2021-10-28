@@ -2,14 +2,14 @@
     <div class="header" @click="toggleColor()">
         <div class="header-left" @click.stop="back"></div>
 
-        <div class="header-title">{{title}}</div>
+        <div class="header-title">评论({{title}})</div>
         <div class="header-right"></div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "DetailHeader",
+        name: "CommentsHeader",
         data: function () {
             return {
                 theme: ['theme', 'theme1', 'theme2'],

@@ -17,3 +17,11 @@ npm i
 npm run serve
 
 npm run build
+
+
+
+评论界面:
+
+![1635430668801](C:\Users\蔡舒浙\AppData\Roaming\Typora\typora-user-images\1635430668801.png)
+
+![1635431999106](C:\Users\蔡舒浙\AppData\Roaming\Typora\typora-user-images\1635431999106.png)

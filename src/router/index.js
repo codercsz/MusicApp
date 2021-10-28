@@ -41,24 +41,25 @@ const routes = [
   {
     //重定向 定的是路由并非组件
     path: '/', redirect: '/recommend',
-    
+
   },
   {
     path: '/recommend', component: Recommend,
-      children: [
+    children: [
+      {
+        path: 'detail/:id/:type',
+        component: Detail,
+        //三级路由
+    /*    children: [
           {
-              path: 'detail/:id/:type',
-              component: Detail,
-              //三级路由
-              children: [
-                  {
-                      path: '/detail/comments',
-                      component: () => import("../components/Detail/Comments")
-                  }
-              ]
-          },
+            path: 'detail/:id/:type/comments',
+            component: () => import("../components/Detail/Comments")
+          }
+        ]*/
+      },
 
-      ]},
+    ]
+  },
   {
     path: '/singer',
     component: Singer,
@@ -66,7 +67,6 @@ const routes = [
       {
         path: 'detail/:id/:type',
         component: () => import('../components/Detail/Detail')
-        
       }
     ]
   },
@@ -77,13 +77,17 @@ const routes = [
       {
         path: 'detail/:id/:type',
         component: () => import('../components/Detail/Detail')
-      
+
       }
     ]
   },
-  {path: '/search', component: Search },
-  { path: '/account', component: () => import("../components/account/Account") }
-]
+  {path: '/search', component: Search},
+  {path: '/account', component: () => import("../components/account/Account")},
+  {path: '/comments/:id', component: () => import("../components/Comments/Comments")},
+
+
+
+];
 
 const router = new VueRouter({
   //如果需要预渲染的插件，那么Router的模式必须是history模式，否则打包失败

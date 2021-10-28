@@ -33,8 +33,7 @@
         },
         methods: {
             selectComments() {
-                this.$emit("fatherSelectComments", this.songlist.id)
-                console.log(this.songlist);
+                this.$emit("fatherSelectComments");
             },
  
 

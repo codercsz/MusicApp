@@ -21,7 +21,7 @@ export const getSingerDetail = data => Network.get('/artists', data);   //获取
 export const getSearchList = data => Network.get('/cloudsearch?type', data);   //获取搜索列表
 export const getHotList = () => Network.get('/search/hot');   //获取热门搜索列表
 
-
+export const songsListComments = data => Network.get('/comment/playlist', data);   //获取歌单评论
 
 
 

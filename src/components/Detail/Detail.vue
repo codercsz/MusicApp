@@ -9,7 +9,10 @@
                 </div>
             </ScrollView>
         </div>
+
+
     </div>
+    
 </template>
 
 <script>
@@ -19,6 +22,7 @@
     import ScrollView from "../ScrollView";
     import {getSongDetail, getAlbum, getComment, getAlbumComment, getSingerDetail} from '../../api/index';
     import MetaInfo from "../../../vue-meta-info";
+    import Comments from "../Comments/Comments";
 
     export default {
       name: "Detail",
@@ -27,7 +31,11 @@
         SubHeader,
         DetailTop,
         DetailBottom,
-        ScrollView
+        ScrollView,
+          Comments
+          
+          
+          
       },
       data: function () {
         return {
@@ -38,12 +46,13 @@
         }
       },
       methods: {
-        selectComments(id) {
-          this.$router.push({
-            path: `/recommend/detail/${id}`
-          })
-      
-        }
+          selectComments() {
+              let id = this.$route.params.id;
+              this.$router.push({
+                  path: `/comments/${id}`
+              })
+        
+          }
       },
       created() {
         console.log(this.$route.params.type)
